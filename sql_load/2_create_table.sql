@@ -1,7 +1,7 @@
---create customer_support table with primary key
+--create customer_support_tickets table with primary key
 customer_support
 
-create table public.customer_support 
+create table public.customer_support_tickets
 ( 
   ticket_id SERIAL PRIMARY KEY,
   customer_name VARCHAR(255),
