@@ -1,5 +1,5 @@
 --create customer_support table with primary key
-customer_support_3
+customer_support_2
 
 create table public.customer_support 
 ( 
