@@ -19,7 +19,9 @@ FROM customer_support
  with duplicte_cte as(
 SELECT *,
     ROW_NUMBER() OVER(PARTITION BY
-    ticket_id,customer_age,customer_gender,product_purchased,date_of_purchase,ticket_type,ticket_subject,ticket_status,ticket_priority,ticket_channel) as row_num
+    ticket_id,customer_age,customer_gender,product_purchased,
+    date_of_purchase,ticket_type,ticket_subject,
+    ticket_status,ticket_priority,ticket_channel) as row_num
  FROM customer_support_3
  )
  SELECT * FROM duplicte_cte
