@@ -1,6 +1,9 @@
 /*
---identify customers who opened multiple tickets for the same issues
-Why? --Helps in identifying recurring customer issues and improving long-term retention
+Find which customers sent multiple tickets
+--Identify customers who opened multiple tickets for     the same issues
+--Identify the ticket type to know the ticket type associated with multiple tickets
+Why? 
+--Helps in identifying recurring customer issues and improving long-term retention
 */
 
 SELECT 
