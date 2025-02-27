@@ -4,7 +4,6 @@ BONUS:Identify the TOP 10 different ticket_type in these tickets
 Why? --Identify if priority vary with age,do older cutsomers submit more critical  tickets due to technical issues
 */
 
-SELECT * from customer_support_3
 SELECT
 COUNT(*) AS tickets_count,
 ticket_type,

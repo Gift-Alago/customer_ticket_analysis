@@ -53,4 +53,3 @@ ORDER BY tickets_count DESC
   }
 ]
 */
-
