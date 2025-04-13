@@ -1,12 +1,13 @@
-/* category customers into different  age groups
+/* categorize customers into different age groups
 . 18-25: Young adults
 . 26-35: Early career
 . 36-50: Mid career
 . 51-65: Near retirement
 . 65+: Seniors
---which age group submit the most support tickets?
---are they gaps in user support?if most customers are from a certain age group,high ticket counts could be expected
-why?--Helps identify how support can be improved among age groups
+--Which age group submit the most support tickets?
+--Are they gaps in user support? If most customers are from a certain age group,high ticket counts could be expected
+Why?
+--Helps identify how support can be improved among age groups
 */
 
 SELECT
