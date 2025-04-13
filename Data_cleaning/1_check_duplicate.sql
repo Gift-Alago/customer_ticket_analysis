@@ -1,6 +1,6 @@
 --Data cleaning is used to fix issues in the raw data,to make data useful 
 
---create new table for staging, basically copying all the data from the raw table to the staging table
+--create new table for staging, basically copying  data from the raw table to the staging table
 
 CREATE TABLE
   customer_support_3 AS SELECT *
