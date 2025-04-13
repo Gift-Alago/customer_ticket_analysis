@@ -1,7 +1,9 @@
-/* Find priority of ticket by age group
+/*
+Find priority of ticket by age group
 --Identify which age group has the highest ticket_priority "Critical"
 BONUS:Identify the TOP 10 different ticket_type in these tickets
-Why? --Identify if priority vary with age,do older cutsomers submit more critical  tickets due to technical issues
+Why?
+--Identify if priority varies with age, do older cutsomers submit more critical tickets due to technical issues
 */
 
 SELECT
