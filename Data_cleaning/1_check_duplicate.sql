@@ -1,6 +1,6 @@
---Data cleaning is used to fix issues in th raw data,to make data useful 
+--Data cleaning is used to fix issues in the raw data,to make data useful 
 
---create new table for staging,basically copying all the data from the raw table to the staging table
+--create new table for staging, basically copying all the data from the raw table to the staging table
 
 CREATE TABLE
   customer_support_3 AS SELECT *
@@ -14,7 +14,7 @@ SELECT *
 FROM customer_support
 
 
---check for deplicates and remove if any!
+--Check for duplicates and remove if any!
 
  with duplicte_cte as(
 SELECT *,
