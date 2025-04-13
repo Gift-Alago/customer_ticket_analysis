@@ -1,9 +1,10 @@
 /*
 Find channels with critical tickets
 --which channels receive the hightest number of critical tickets?
---what are the top 10 ticket types that appears frequently within those high prioity "critical" tickets
+--what are the top 10 ticket types that appears frequently within those high priority "critical" tickets
 WHY?
-    -identify which support channels(email,phone,chat,etc) receive the most tickets,providing insight for tech support to identify which channel and ticket type urgent issues are escalated through.
+-identify which support channels(email,phone,chat,etc) receive the most tickets,
+providing insight for tech support to identify which channel and ticket type urgent issues are escalated through.
    
 */
 
