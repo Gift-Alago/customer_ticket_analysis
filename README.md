@@ -1,37 +1,55 @@
-# Introdution
-Let's deive into the world of customer support tickets! This project explores high priority tickets, customers age group, and behavioral characteristics of cutomers towards customer support.
+# 📊 Customer Support Ticket Analysis
 
-SQL queries? Check them out here: [Project_sql folder](/Project_sql/)
+Welcome to a deep dive into the world of **customer support tickets**!  
+This project explores **high-priority tickets**, **customer age groups**, and **behavioral characteristics** to uncover patterns and improve customer service experience.
 
-# Background
-Driven by the quest to advocate for customers more effientiently, this project was born from a desire to pinpoint customers issues,types of issues and how to resolve it,leading to improving long term retention.
+> 📂 Check out the SQL queries here: [Project_sql folder](/Project_sql/)
 
-### The questions I wanted to answer through my SQL queries were:
-1. What is the average time for a ticket to be resolved base on ticket type?
-2. Which channels have the most high-priority tickets?
-3. Which customers sent multiple tickets for the same issues?
-4. Which age group submit the most support tickets?
-5. Which age group has the highest ticket_priority "Critical"?
+---
 
-# Tools I Used
-For my deep dive into customers support tickets, I harnessed the power of several key tools:
+## 🔍 Background
 
-- SQL: The backbone of my analysis, allowing me to query the database and unearth critical insights.
-- PostgreSQL: The choosen database management system, ideal for handling the customer support ticket data.
-- Visual Studio Code:My go-to for database management and executing SQL queries.
-- Git and GitHub: Essential for version control and sharing my sql scripts and analysis, ensuring collaboration and project tracking.
+Driven by a mission to **advocate for customers more efficiently and effectively**, this project aims to uncover the root causes of issues and their frequency. By identifying which issues recur, how long they take to resolve, and the demographics behind them, we can enhance customer satisfaction and improve long-term retention.
 
-# The Analysis
-Each query for this project aimed at investigating specific aspects of the customer support ticket.
-Here's how i approached each questions:
+---
 
-### 1.Average time for time to resolution
-It is also known as mean time to resolution (MTTR). To identify the average resolution time, I filtered customer tickets by calculating the average resolution time minus the  first response time,categorized by ticket type. This query highlights the average time time it takes to fully resolve a ticket after the initial reponse.
+## ❓ Project Questions
+
+Here are the questions I aimed to answer with SQL:
+
+1. ⏱️ What is the **average time** to resolve a ticket based on ticket type?
+2. 📢 Which **channels** receive the most **high-priority (critical)** tickets?
+3. 🔁 Which **customers sent multiple tickets** for the same issue?
+4. 👥 Which **age group submits** the most support tickets?
+5. 🚨 Which **age group has the most "Critical" priority** tickets?
+
+---
+
+## 🛠️ Tools Used
+
+| Tool              | Purpose                                                                 |
+|------------------|-------------------------------------------------------------------------|
+| **SQL**          | For querying and analyzing the ticket data                              |
+| **PostgreSQL**   | Database management system for handling the dataset                     |
+| **Visual Studio Code** | For executing queries and database management                    |
+| **Git & GitHub** | Version control and project documentation                               |
+
+---
+
+## 📈 The Analysis
+
+Each query investigates a specific customer support behavior. Here's a breakdown of how each was approached:
+
+---
+
+### 1. ⏳ Average Time to Resolution by Ticket Type
+
+This query calculates the average time it takes to resolve a ticket after the first response, also known as **Mean Time to Resolution (MTTR)**.
 
 ```sql
 SELECT  
-     ticket_type ,
-     AVG("time_to_resolution" - "first_response_time" ) as avg_resolution_time
+     ticket_type,
+     AVG("time_to_resolution" - "first_response_time") AS avg_resolution_time
 FROM 
      customer_support_3
 WHERE
@@ -39,15 +57,10 @@ WHERE
 GROUP BY
      ticket_type
 ORDER BY
-     avg_resolution_time DESC
+     avg_resolution_time DESC;
 ```
-### **Here's the breakdown of the average resolution time categorized by ticket type**
 
-- **Refund requests** take the longest to resolve (8 hours, 7 minutes). 
-This could be due to approval processes or additional verification steps.
-- **Technical issues** takes about (7 hours, 21 minutes). This suggests an efficient troubleshooting process or well-documented solutions.
-- **Cancellation and product inquiries** have nearly identical resolution times (around 7 hours, 40-41 minutes), indicating similar complexity and processes
-- **Billing inquiries** are resolved slightly faster than cancellation and product inquiries but still take over 7 hours, likely due to verification needs like; subscription bundles,type of subscription,date of subscription and much more.
+#### 📊 Average Resolution Time by Ticket Type:
 
 | Ticket Type          | Avg Resolution Time (hh:mm) |
 |----------------------|---------------------------|
@@ -56,12 +69,19 @@ This could be due to approval processes or additional verification steps.
 | Product inquiry     | 07:40                      |
 | Technical issue     | 07:21                      |
 | Billing inquiry     | 07:36                      |
- 
- *Table for average resolution time*
 
+#### 🔍 Insights:
 
-### 2.Ticket channel with high priority
-To identify which support channels receive the highest number of critical tickets, I analyzed customer support data by counting ticket entries and categorizing them by ticket channel. This query retrieves the support channels(email, phone, chat and social)that handle the most high-priority (critical) tickets. Additionally, by filtering tickets by ticket-type, I can determine the top 10 most frequent urgent issues that require escalation.
+- **Refund requests** take the longest to resolve (8 hours, 7 minutes). 
+This could be due to approval processes or additional verification steps.
+- **Technical issues** takes about (7 hours, 21 minutes). This suggests an efficient troubleshooting process or well-documented solutions.
+- **Cancellation and product inquiries** have nearly identical resolution times (around 7 hours, 40-41 minutes), indicating similar complexity and processes
+- **Billing inquiries** are resolved slightly faster than cancellation and product inquiries but still take over 7 hours, likely due to verification needs like; subscription bundles,type of subscription,date of subscription and much more.
+
+---
+
+### 2. 📣 Channels with Most High-Priority Tickets
+To identify which support channels receive the highest number of critical tickets, I analyzed customer support data by counting ticket entries and categorizing them by ticket channel. This query retrieves the support channels(email, phone, chat and social)that handle most of high-priority (critical) tickets. Additionally, by filtering tickets by ticket-type, I can determine the top 10 most frequent urgent issues that require escalation.
 
 ```sql
 with critical_tickets as(
@@ -90,14 +110,8 @@ ORDER BY
     total_critical_tickets DESC
 LIMIT 10
 ```
-### **Here is the insights from this query**
+#### 🧾 Top 10 Channels with Most Critical Tickets:
 
-- **Email is the dominant support channel for critical tickets**, appearing in 4 out of the top 10 results. This suggests that customers prefer email for escalating high-priority issues.
-- **Refund requests appear frequently across multiple channels**,including email (241), social media (232), and chat (219),indicating that refund-related concerns are a major pain point.
-- **Technical issues are reported heavily on social media (236), chat (223), and email (211),** suggesting that customers might turn to different platforms when experiencing urgent technical problems.
-- **Chat has a balanced distribution of critical tickets,** with technical issues, refund requests, and billing inquiries all ranking highly, showing that real-time interactions are vital for urgent support.
-- **Phone appears only once in the top 10, for product inquiries (214),** which may indicate that customers primarily use phone support for resolving complex purchase-related or highly personalized issues.It could also be as a result that it is most expensive
- 
 | Ticket Channel | Ticket Type        | Total Critical Tickets |
 |---------------|--------------------|------------------------|
 | Email        | Refund request      | 241                    |
@@ -111,10 +125,17 @@ LIMIT 10
 | Email        | Product inquiry     | 213                    |
 | Email        | Technical issue     | 211                    |
 
-*Table for channels that receives the most high piority tickets and its ticket-type*
+#### 📌 Insights:
 
-### 3.Multiple tickets for the same issues
-To identify customers who have submitted multiple tickets for the same issue, I analyzed by counting the occurances and categorized it by "customer-email" and "ticket-subject". The HAVING COUNT(*)>1 condition ensures that only repeated issues are included.
+- Email is the top channel for critical issues.
+- Refund and technical issues dominate across all platforms.
+- Real-time channels like chat are key for resolving billing and refund concerns quickly.
+- support is limited, possibly due to cost or complexity.
+
+---
+
+### 3. 🔁 Repeated Tickets for the Same Issue
+To identify customers who have submitted multiple tickets for the same issue, I analyzed by counting the occurances and categorized it by "customer-email" and "ticket-subject". The (HAVING COUNT(*)>1) condition ensures that only repeated issues are included.
 
 ```sql
 SELECT 
@@ -128,13 +149,8 @@ GROUP BY
 HAVING count(*) > 1
 ORDER BY repeat_tickets DESC
 ```
-### **Here is the insights from this query:**
+#### ♻️ Repeat Tickets by ticket Subject
 
-1. **Installation support is the most frequently repeated issue**, appearing twice with different customers, and on one instance having 3 repeated tickets.  
-2. **Battery life and product recommendation tickets have also been raised multiple times**, indicating potential customer concerns with durability and product choices.  
-3. **Product setup issues suggest users may struggle with onboarding**, highlighting the need for better setup guides or support resources like FAQ, knowledge base  
-
- 
 | Customer Email             | Ticket Subject             | Repeat Tickets |
 |----------------------------|---------------------------|---------------|
 | bsmith@example.com        | Installation support      | 3             |
@@ -143,7 +159,17 @@ ORDER BY repeat_tickets DESC
 | ewhite@example.net        | Installation support      | 2             |
 | tbutler@example.net       | Product setup             | 2             |
 
-*Table of Repeated Tickets by Ticket subject*
+#### 🧠 Insights:
+
+- Installation and setup issues are common recurring problems.
+- Indicates a potential gap in onboarding or documentation.
+- Product recommendation and battery life suggest dissatisfaction or confusion about product specs.
+
+---
+
+ 
+
+
 
 ### 4. Age group that submits the most support tickets
 I categorized customers into five different age groups:
