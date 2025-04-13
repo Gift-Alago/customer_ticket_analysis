@@ -3,8 +3,9 @@
 What is the average time for a ticket to be resolved per ticket type
 -Identify the average time a ticket is been resloved per ticket type
 -Focuses on ticket with specific resolution time (remove nulls)
-Why? -Helps to identify which ticket type takes the longest to resolve
-     -Identify how long it takes to resolve a ticket after the first response
+Why? 
+-Helps to identify which ticket type takes the longest to resolve
+-Identify how long it takes to resolve a ticket after the first response
 */
 
 SELECT  
