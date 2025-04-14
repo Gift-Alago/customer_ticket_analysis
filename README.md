@@ -38,7 +38,7 @@ Here are the questions I aimed to answer with SQL:
 
 ## 📈 The Analysis
 
-Each query investigates a specific customer support behavior. Here's a breakdown of how each was approached:
+**Each query investigates a specific customer support behavior. Here's a breakdown of how each was approached:**
 
 ---
 
@@ -81,7 +81,8 @@ This could be due to approval processes or additional verification steps.
 ---
 
 ### 2. 📣 Channels with Most High-Priority Tickets
-To identify which support channels receive the highest number of critical tickets, I analyzed customer support data by counting ticket entries and categorizing them by ticket channel. This query retrieves the support channels(email, phone, chat and social)that handle most of high-priority (critical) tickets. Additionally, by filtering tickets by ticket-type, I can determine the top 10 most frequent urgent issues that require escalation.
+To identify which support channels receive the highest number of critical tickets, I queried customer support data by counting ticket entries and categorizing them by ticket channel. This query retrieves the support channels(email, phone, chat and social)that handle most of high-priority (critical) tickets. Additionally, by filtering tickets by ticket-type:
+I can determine the top 10 most frequent urgent issues that require escalation.
 
 ```sql
 with critical_tickets as(
@@ -135,7 +136,7 @@ LIMIT 10
 ---
 
 ### 3. 🔁 Repeated Tickets for the Same Issue
-To identify customers who have submitted multiple tickets for the same issue, I analyzed by counting the occurances and categorized it by "customer-email" and "ticket-subject". The (HAVING COUNT(*)>1) condition ensures that only repeated issues are included.
+To identify customers who have submitted multiple tickets for the same issue, I counted the occurances and categorized it by "customer-email" and "ticket-subject". The (HAVING COUNT(*)>1) condition ensures that only repeated issues are included.
 
 ```sql
 SELECT 
@@ -167,19 +168,14 @@ ORDER BY repeat_tickets DESC
 
 ---
 
- 
+### 4. 👥 Ticket Volume by Age Group
+Customers were grouped into the following age categories:
 
-
-
-### 4. Age group that submits the most support tickets
-I categorized customers into five different age groups:
-- 18-25: Young adults
-- 26-35: Early career
-- 36-50: Mid career
-- 51-65: Near retirement
+- 18–25: Young Adults
+- 26–35: Early Career
+- 36–50: Mid Career
+- 51–65: Near Retirement
 - 65+: Seniors
-
-To analyze on the different age groups and know how many  tickets their submitted
 
 ``` sql
 SELECT
@@ -200,15 +196,7 @@ GROUP BY age_group
 ORDER BY tickets_count DESC
 ```
 
-### **Analysis of Ticket Count by Age Group**
-1. **Near Retirement (1,229 tickets) and Mid Career (1,211 tickets) have the highest ticket volumes**, indicating that these age groups require the most support.
-2. **Early Career (835 tickets) and Young Adults (621 tickets) have moderate ticket volumes**, suggesting that they may be more familiar with the product but still require assistance.
-3. **Seniors (389 tickets) have the lowest ticket count**, possibly due to lower engagement with the product and fewer users in this category.
-4. The **difference between the top two groups (Near Retirement and Mid Career) is minimal**, meaning they both face similar support challenges.
-5. **Customer Support  should focus more on the Near Retirement and Mid Career groups**, while ensuring Young Adults and Early Career users have self-service options.
-
----
-
+#### 📊 Tickets by Age Group:
 
 | Age Group         | Ticket Count |
 |------------------|-------------|
@@ -218,10 +206,16 @@ ORDER BY tickets_count DESC
 | Young Adults    | 621         |
 | Seniors        | 389         |
 
-*Table for ticket count by age group*
+#### 🔍 Insights:
+1. Near Retirement and Mid Career groups have the highest ticket volume. 
+2. Younger users may rely more on self-service tools.
+3. Seniors engage less, possibly due to lower product usage or comfort with tech.
+4. **Customer Support  should focus more on the Near Retirement and Mid Career groups**, while ensuring Young Adults and Early Career users have self-service options.
 
-### 5.Ticket with high piority and ticket-type from the different age groups
-This analyzes identifies which age group has the highest ticket_priority "Critical" and the top 10 ticket types associated with it
+---
+
+### 5. 🚨 High-Priority Tickets by Age Group
+This query shows the top 10 combinations of ticket types and age groups with the highest number of "Critical" priority tickets.
 
 ```sql
 SELECT * from customer_support_3
@@ -245,7 +239,7 @@ GROUP BY age_group,ticket_type
 ORDER BY tickets_count DESC
  LIMIT 10
  ```
- ### **Table: High-Priority Ticket Categories by Age Group**  
+ #### 🔥 Top 10 Critical Issues by Age Group  
 
 | Tickets Count | Ticket Type          | Age Group        |
 |--------------|----------------------|------------------|
@@ -259,41 +253,35 @@ ORDER BY tickets_count DESC
 | 56           | Product inquiry      | Near Retirement |
 | 52           | Refund request       | Mid Career      |
 
+#### 💡 Insights:
 
-  *Table: High-Priority Ticket Categories by Age Group* 
+- Technical issues are the top concern among Mid Career and Near Retirement groups.
+- Billing and refund concerns are consistent across both groups.
+- Product and cancellation issues also emerge as pain points.
 
-### **Here is insights from the query:**
-- **Technical issues** are the most common, especially among mid-career users.  
-- **Billing and refund requests** are frequent across both age groups.  
-- **Near-retirement users** have more **cancellation requests**, possibly due to service changes.  
-- **Product inquiries** show ongoing interest in product details from both groups.  
-
-# What I Learned
+---
+## What I Learned
 🔥 Leveling Up My SQL Game! 🔥
 
 I've been on an SQL adventure, unlocking new skills like a data-wielding superhero:
 
 - 🧩 Query Mastery: Taming complex queries, and summoning WITH clauses for some serious SQL magic.
-- 📊 Data Aggregation Wizardry: GROUP BY and aggregate functions (COUNT, AVG) are my sidekicks, helping me turn raw data into meaningfull insights.
+- 📊 Data Aggregation Wizardry: GROUP BY and aggregate functions (COUNT, AVG) are my sidekicks, helping me turn raw data 
+  into meaningfull insights.
 - 💡 Analytical Superpowers: Transforming real-world questions into SQL-powered answers that actually make sense!
 
-# Conclusions
- **Insights**
+---
+
+## Conclusions
+  From the analysis, several insights emerged:
+
+  1.**Average Resolution Time by Ticket Type:** The highest average time for resolution was 8hours,7mins which is the Refund request ticket.
  
- From the analysis, several insights emerged:
+ 2.**Channels with Most High-Priority Tickets:** Email Is the dominant support channel for critical tickets appearing in 4 out of the top 10 results.
 
- 1.**Average Time For Time to Resolution:** The higest average time for resolution is 8hours,7mins which is the Refund request ticket.
- 
- 2.**Ticket Channel With The Most High-Piority Tickets:** Email Is the dominant support channel for critical tickets appearing in 4 out of the top 10 results.
+ 3.**Repeated Tickets for the Same Issue:** Installation support is the most frequently reported issue,appearing twice with different customers.
 
- 3.**Multiple Tickets For The Same Isuues:**
- Installation support is the most frequently reported issue,appearing twice with different customers.
+ 4.**Tickets volume by age groups:** Near Retirement(1229 tickets) and Mid Career(1211 tickets) having the highest ticket volumes. Customer Support  should focus more on the Near Retirement and Mid Career groups, while ensuring Young Adults and Early Career users have self-service options.
 
- 4.**Age Group That Submit The Must Support Tickets:** Near Retirement(1229 tickets) and Mid Career(1211 tickets) having the highest ticket volumes.
+ 5.**High-Priority Tickets by Age Group:** Technical issues are the most common especially among mid-career users (35-50years).
 
- 5.**Ticket Piority vs Age Group Per Ticket-Types:** 
-Technical issues are the most common especially among mid-career users (35-50years)
-
-
-
- 
