@@ -275,13 +275,13 @@ I've been on an SQL adventure, unlocking new skills like a data-wielding superhe
 ## Conclusions
   From the analysis, several insights emerged:
 
-  1.**Average Resolution Time by Ticket Type:** The highest average time for resolution was 8hours,7mins which is the Refund request ticket.
+  1. **Average Resolution Time by Ticket Type:** The highest average time for resolution was 8hours,7mins which is the Refund request ticket.
  
- 2.**Channels with Most High-Priority Tickets:** Email Is the dominant support channel for critical tickets appearing in 4 out of the top 10 results.
+ 2. **Channels with Most High-Priority Tickets:** Email Is the dominant support channel for critical tickets appearing in 4 out of the top 10 results.
 
- 3.**Repeated Tickets for the Same Issue:** Installation support is the most frequently reported issue,appearing twice with different customers.
+ 3. **Repeated Tickets for the Same Issue:** Installation support is the most frequently reported issue,appearing twice with different customers.
 
- 4.**Tickets volume by age groups:** Near Retirement(1229 tickets) and Mid Career(1211 tickets) having the highest ticket volumes. Customer Support  should focus more on the Near Retirement and Mid Career groups, while ensuring Young Adults and Early Career users have self-service options.
+ 4. **Tickets volume by age groups:** Near Retirement(1229 tickets) and Mid Career(1211 tickets) having the highest ticket volumes. Customer Support  should focus more on the Near Retirement and Mid Career groups, while ensuring Young Adults and Early Career users have self-service options.
 
- 5.**High-Priority Tickets by Age Group:** Technical issues are the most common especially among mid-career users (35-50years).
+ 5. **High-Priority Tickets by Age Group:** Technical issues are the most common especially among mid-career users (35-50years).
 
