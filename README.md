@@ -9,7 +9,7 @@ This project explores **high-priority tickets**, **customer age groups**, and **
 
 ## 🔍 Background
 
-Driven by a mission to **advocate for customers more efficiently and effectively**, this project aims to uncover the root causes of issues and their frequency. By identifying which issues recur, how long they take to resolve, and the demographics behind them, we can enhance customer satisfaction and improve long-term retention.
+Driven by a mission to **advocate for customers more efficiently and effectively**, this project aims to uncover the root causes of issues and their frequency. By identifying which issues recur, how long they take to resolve, and the demographics behind them, how I can enhance customer satisfaction and improve long-term retention.
 
 ---
 
